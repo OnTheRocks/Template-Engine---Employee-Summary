@@ -10,7 +10,7 @@ class Employee {
     return this.name
   };
 
-  getID() {
+  getId() {
     return this.id
   };
 
@@ -23,4 +23,4 @@ class Employee {
   };
 }
 
-export default Employee;
+module.exports = Employee;
