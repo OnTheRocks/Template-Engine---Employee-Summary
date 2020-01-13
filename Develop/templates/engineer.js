@@ -1,8 +1,8 @@
-function createEngineerCard (data)
-{ return `<div class="card card-title" style="width: 20rem;">
+function EngineerCard (data)
+{ return ` <div class="card card-title" style="width: 20rem;">
   <div class="card-title card-body">
     <h2>${[data.name]}</h2>
-    <h3><i class="fas fa-graduation-cap"></i> Engineer</h3>
+    <h3><i class="fas fa-glasses"></i> Engineer</h3>
   </div>
     <ul class="list-group">
       <li class="list-group-item text-left"><b>ID:</b> ${[data.id]}</li>
@@ -12,4 +12,4 @@ function createEngineerCard (data)
   </div>
 `}
 
-module.exports = createEngineerCard;
+module.exports = EngineerCard;

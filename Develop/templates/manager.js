@@ -1,5 +1,5 @@
-function CreateManagerHTML (data) { 
-  return `<div class="card card-title" style="width: 20rem;">
+function ManagerHTML (data) { 
+  return ` <div class="card card-title" style="width: 20rem;">
   <div class="card-title card-body ">
     <h2>${[data.name]}</h2>
     <h3><i class="fas fa-coffee"></i> Manager</h3>
@@ -12,4 +12,4 @@ function CreateManagerHTML (data) {
   </div> 
 `}
 
-module.exports = CreateManagerHTML;
+module.exports = ManagerHTML;

@@ -6,10 +6,10 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 
-const managerFunc = require("./templates/manager");
-const engineerFunc = require("./templates/engineer");
-const internFunc = require("./templates/intern");
-const mainFunc = require("./templates/index");
+const managerTemp = require("./templates/manager");
+const engineerTemp = require("./templates/engineer");
+const internTemp = require("./templates/intern");
+const mainTemp = require("./templates/index");
 
 const profiles = [];
 
@@ -67,23 +67,23 @@ function engage() {
   .then(function(answers) {
     if (answers.role === "Manager") {
       const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
-      const templateReturn = managerFunc(manager);
+      const templateReturn = managerTemp(manager);
       profiles.push(templateReturn);   
   }
     if (answers.role === "Engineer") {
       const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
-      const templateReturn = engineerFunc (engineer);
+      const templateReturn = engineerTemp (engineer);
       profiles.push(templateReturn);  
   }
   if (answers.role === "Intern") {
       const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
-      const templateReturn = internFunc (intern);
+      const templateReturn = internTemp (intern);
       profiles.push(templateReturn)
   }
 
   if(answers.nextEmp === false) {
 
-    const html = mainFunc(profiles);
+    const html = mainTemp(profiles);
      
     fs.writeFileSync("./output/index.html", html);
 

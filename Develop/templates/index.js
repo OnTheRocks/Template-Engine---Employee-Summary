@@ -1,4 +1,4 @@
-function createMainHTML (profiles)
+function MainHTML (profiles)
 { return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,29 +31,6 @@ body {
  background-image: url("../../Assets/images/cubes.png");
 }
 
-.jumbotron img {
- float: left;
- width: 250px;
- height: 250px;
- border-radius: 50%;
- object-fit: cover;
- margin-top: -80px;
- border: 4px solid black;
- box-shadow: rgba(0, 0, 0, .5) 5px 1px 20px 4px;
- /* text-align: center; */
-}
-
-.container {
- width: 100%;
- text-align: left;
- padding: 20px 0 0 0;
-}
-
-.link {
- display: inline-block;
- margin: 5px 10px 0px 10px;
-}
-
 .card {
  margin: 15px;
  border: thin #00c851 solid;
@@ -68,11 +45,6 @@ body {
 .card-title {
  text-align: center;
 } 
-
-a, a:hover {
- text-decoration: none;
- color: inherit;
-}
 
 .nameBlock {
  margin-left: 80px;
@@ -103,4 +75,4 @@ a, a:hover {
 `
 }
 
-module.exports = createMainHTML;
+module.exports = mainHTML;

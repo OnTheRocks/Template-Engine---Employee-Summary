@@ -1,4 +1,4 @@
-function createInternCard (data)
+function InternCard (data)
 { return `<div class="card card-title" style="width: 20rem;">
   <div class="card-title card-body">
     <h2>${[data.name]}</h2>
@@ -12,4 +12,4 @@ function createInternCard (data)
   </div>
 `}
 
-module.exports = createInternCard;
+module.exports = InternCard;
