@@ -1,119 +1,98 @@
 const fs = require("fs");
-
-
 const inquirer = require("inquirer");
 const jest = require("jest");
 
 const Manager = require("./lib/Manager");
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+
 const managerFunc = require("./templates/manager");
 const engineerFunc = require("./templates/engineer");
+const internFunc = require("./templates/intern");
+const mainFunc = require("./templates/index");
 
 const profiles = [];
 
-const engineerPrompts = [
+const questions = [
+  {
+    type: "list",
+    name: "role",
+    message: "Select the team member's role:",
+    choices: ["Manager", "Engineer", "Intern"]
+  },
   {
     type: "input",
     name: "name",
-    message: "Enter Engineer's Name"
+    message: "Enter name.",
   },
   {
     type: "input",
     name: "id",
-    message: "Enter Engineer's ID"
+    message: "Enter id.",
   },
   {
     type: "input",
     name: "email",
-    message: "Enter Engineer's Email"
+    message: "Enter email address."
   },
   {
     type: "input",
     name: "gitHub",
-    message: "Enter Engineer's GitHub username"
-  },
-  {
-    type: "list",
-    name: "role",
-    message: "Which type of employee would you like to enter?",
-    choices: ["Engineer", "Intern", "No more additions"]
-  }
- ]
-
- const internPrompts = [
-  {
-    type: "input",
-    name: "name",
-    message: "Enter intern's Name"
-  },
-  {
-    type: "input",
-    name: "id",
-    message: "Enter intern's ID"
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "Enter intern's email"
+    message: "Enter GitHub username.",
+    when: (answers) => answers.role === "Engineer",
   },
   {
     type: "input",
     name: "school",
-    message: "Enter intern's school"
+    message: "Enter name of school.",
+    when: (answers) => answers.role === "Intern",
   },
   {
-    type: "list",
-    name: "role",
-    message: "Which type of employee would you like to enter?",
-    choices: ["Engineer", "Intern", "No more additions"]
+    type: "input",
+    name: "officenumber",
+    message: "Enter office number.",
+    when: (answers) => answers.role === "Manager",    
+  },
+  {
+    type: "confirm",
+    name: "nextEmp",
+    message: "Do you have another employee to add?",
   }
- ]
-
-
+];
     console.log("Let's build your team...");
 
-  return inquirer.prompt([
-    {
-      type: "input",
-      name: "name",
-      message: "Enter your name"
-    },
-    {
-      type: "input",
-      name: "id",
-      message: "Enter your ID"
-    },
-    {
-      type: "input",
-      name: "email",
-      message: "Enter your Email"
-    },
-    {
-      type: "input",
-      name: "officeNumber",
-      message: "Enter your Office Number"
-    },
-    {
-      type: "confirm",
-      name: "nextEmp",
-      message: "Do you have another employee to add?",
-    }
-  ])
+function engage() {
+  inquirer.prompt(questions)
 
   .then(function(answers) {
-    let manager = new Manager(answers.name,answers.id,answers.email,answers.officeNumber);
-    const templateReturn = managerFunc(manager);
-    profiles.push(templateReturn);
-console.log(profiles);
+    if (answers.role === "Manager") {
+      const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+      const templateReturn = managerFunc(manager);
+      profiles.push(templateReturn);   
+  }
+    if (answers.role === "Engineer") {
+      const engineer = new Engineer(answers.name, answers.id, answers.email, answers.gitHub);
+      const templateReturn = engineerFunc (engineer);
+      profiles.push(templateReturn);  
+  }
+  if (answers.role === "Intern") {
+      const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+      const templateReturn = internFunc (intern);
+      profiles.push(templateReturn)
+  }
 
-if (answers.nextEmp) {
-  var {role} = inquirer.prompt({
-      type: "list",
-      name: "role",
-      choices: ["Engineer", "Intern"],
-      message: "Would you like to add an engineer or an intern?"
-  })
-}else {
-  return;
-}
+  if(answers.nextEmp === false) {
+
+    const html = mainFunc(profiles);
+     
+    fs.writeFileSync("./output/index.html", html);
+
+    console.log("Your team file has been created.")
+  }
+  else {
+    engage();
+  }
 
   });
+}
+engage();
