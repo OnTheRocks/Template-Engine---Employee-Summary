@@ -1,5 +1,5 @@
 function InternCard (data)
-{ return `<div class="card card-title" style="width: 20rem;">
+{ return ` <div class="card card-title" style="width: 20rem;">
   <div class="card-title card-body">
     <h2>${[data.name]}</h2>
     <h3><i class="fas fa-graduation-cap"></i> Intern</h3>

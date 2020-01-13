@@ -38,18 +38,15 @@ body {
  background-color: #bae0b8;      
 }
 
-.nameBlock {
- text-align: center;
-}
-
 .card-title {
  text-align: center;
 } 
 
 .nameBlock {
- margin-left: 80px;
- margin-right: 11px;
-}
+  text-align: center;
+  margin-left: 80px;
+  margin-right: 11px;
+ }
  
 </style>
 
