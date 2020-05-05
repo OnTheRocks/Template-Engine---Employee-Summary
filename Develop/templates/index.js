@@ -1,4 +1,4 @@
-function MainHTML (profiles)
+function mainHTML (profiles)
 { return `<!DOCTYPE html>
 <html lang="en">
 <head>
