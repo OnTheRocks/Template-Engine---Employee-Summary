@@ -1,7 +1,7 @@
 {
-  "name": "unit10hw",
+  "name": "EmployeeSummar",
   "version": "1.0.0",
-  "description": "OOP and testing for week 10 homework",
+  "description": "Creates a summary of employees",
   "main": "app.js",
   "directories": {
     "lib": "lib",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stevetrilogy/unit10hw.git"
+    "url": "https://github.com/OnTheRocks/Employee-Directory.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/stevetrilogy/unit10hw/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/stevetrilogy/unit10hw#readme",
+  "homepage": "https://github.com/OnTheRocks/Employee-Directory.git",
   "dependencies": {
     "inquirer": "^6.3.1"
   },
