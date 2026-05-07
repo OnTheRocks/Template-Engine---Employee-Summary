@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/OnTheRocks/Employee-Directory.git",
   "dependencies": {
-    "inquirer": "^6.3.1"
+    "inquirer": "^13.4.2"
   },
   "devDependencies": {
     "jest": "^29.3.1"
